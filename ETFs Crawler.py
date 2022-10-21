@@ -214,16 +214,17 @@ def main(Username,Password):
     df_esg_performance = ETF_Screener_Crawler(driver,Type='ETF ESG')
     df_esg_performance = clean_esg_fund_df(df_esg_performance,df_overview_fund)
 
-    return df_overview_fund, df_fund_flow, df_fund_performance, df_esg_performance
+    return df_overview_fund, df_fund_flow, df_fund_performance, df_esg_performance, df_fund_volatility
 
 
 if __name__ == "__main__":
     
     Username = '****'
     Password = '****'
-    df_overview_fund, df_fund_flow, df_fund_performance, df_esg_performance = main(Username,Password)
+    df_overview_fund, df_fund_flow, df_fund_performance, df_esg_performance, df_fund_volatility = main(Username,Password)
 
     df_overview_fund.to_excel(r'./Data/df_fund_overview.xlsx')
+    df_fund_volatility.to_excel(r'./Data/df_fund_volatility.xlsx')
     df_fund_flow.to_excel(r'./Data/df_fund_flow.xlsx')
     df_fund_performance.to_excel(r'./Data/df_fund_performance.xlsx')
     df_esg_performance.to_excel(r'./Data/df_esg_performance.xlsx')
